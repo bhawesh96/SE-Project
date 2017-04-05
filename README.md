@@ -1,2 +1,2 @@
 # SE-Project
-4th Semester Software Engineering Project : Hospital Management System
+4th Semester Software Engineering Project : Hospital appointment booking System
