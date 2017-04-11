@@ -72,11 +72,21 @@ public class patient extends javax.swing.JFrame {
         historyButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         historyButton.setForeground(new java.awt.Color(0, 102, 102));
         historyButton.setText("CHECK HISTORY");
+        historyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historyButtonActionPerformed(evt);
+            }
+        });
 
         bookButton.setBackground(new java.awt.Color(0, 0, 0));
         bookButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         bookButton.setForeground(new java.awt.Color(255, 102, 0));
         bookButton.setText("BOOK APPOINTMENT");
+        bookButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookButtonActionPerformed(evt);
+            }
+        });
 
         logoutButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         logoutButton.setForeground(new java.awt.Color(255, 0, 0));
@@ -152,6 +162,16 @@ public class patient extends javax.swing.JFrame {
         new patientupdate().setVisible(true);
               this.setVisible(false);
     }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void historyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyButtonActionPerformed
+        new patHistory().setVisible(true);
+              this.setVisible(false);
+    }//GEN-LAST:event_historyButtonActionPerformed
+
+    private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
+        new patientappointment().setVisible(true);
+              this.setVisible(false);
+    }//GEN-LAST:event_bookButtonActionPerformed
 
     /**
      * @param args the command line arguments

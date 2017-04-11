@@ -54,7 +54,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="signUp" pref="96" max="32767" attributes="0"/>
+                      <Component id="signUpButton" pref="96" max="32767" attributes="0"/>
                       <EmptySpace min="105" pref="105" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -106,19 +106,19 @@
                   <Component id="feesText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="signUp" min="-2" max="-2" attributes="0"/>
+              <Component id="signUpButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="signUp">
+    <Component class="javax.swing.JButton" name="signUpButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="SignUp"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="signUpActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="signUpButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -152,9 +152,9 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
             <StringItem index="0" value="General"/>
-            <StringItem index="1" value="Dentist"/>
-            <StringItem index="2" value="Surgeon"/>
-            <StringItem index="3" value="ENT Specialist"/>
+            <StringItem index="1" value="Cancer"/>
+            <StringItem index="2" value="ENT"/>
+            <StringItem index="3" value="Gynecologist"/>
           </StringArray>
         </Property>
       </Properties>

@@ -6,20 +6,47 @@
 package se.project;
 
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
  * @author MAHE
  */
-public class doctordetails_admin extends javax.swing.JFrame {
-
-    /**
-     * Creates new form doctordetails_admin
-     */
-    public doctordetails_admin() {
+public class drAppointments extends javax.swing.JFrame {
+    
+    doctor dr;
+    String patfname, patlname, slot;
+    
+    public drAppointments() {
         initComponents();
         getContentPane().setBackground(Color.lightGray);
+        try {
+            myJSON(dr.myresponse);
+        } catch (JSONException ex) {
+            Logger.getLogger(drAppointments.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
+    private void myJSON(String msg) throws JSONException {
+    final JSONObject obj = new JSONObject(msg);
+    final JSONArray result = obj.getJSONArray("result");
+    final int n = result.length();
+    for (int i = 0; i < n; ++i) {
+      final JSONObject person = result.getJSONObject(i);
+      patfname = person.getString("patfname");
+      patlname = person.getString("patlname");
+      slot = person.getString("slot");
+      String patName = patfname + " " + patlname;
+      Object[] row = {patName, slot};
+             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+             model.addRow(row);
+    }
+  }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,13 +72,10 @@ public class doctordetails_admin extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Patient", "Slot"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -59,6 +83,11 @@ public class doctordetails_admin extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 153, 153));
         jButton1.setText("BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,6 +129,11 @@ public class doctordetails_admin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new doctor().setVisible(true);
+            this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -117,20 +151,21 @@ public class doctordetails_admin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(doctordetails_admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(drAppointments.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(doctordetails_admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(drAppointments.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(doctordetails_admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(drAppointments.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(doctordetails_admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(drAppointments.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new doctordetails_admin().setVisible(true);
+                new drAppointments().setVisible(true);
             }
         });
     }

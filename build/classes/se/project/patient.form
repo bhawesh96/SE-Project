@@ -151,6 +151,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="CHECK HISTORY"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="historyButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bookButton">
       <Properties>
@@ -165,6 +168,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="BOOK APPOINTMENT"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bookButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="logoutButton">
       <Properties>

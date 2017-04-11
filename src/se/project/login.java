@@ -14,6 +14,7 @@ import org.json.JSONObject;
 public class login extends javax.swing.JFrame {
 
     public static String sID, sfname, slname, sdob, ssex, sphone, spatID;
+    String user="patient";
     getPost http = new getPost();
     /**
      * Creates new form login
@@ -37,7 +38,7 @@ public class login extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jDialog1 = new javax.swing.JDialog();
         dialogLab = new javax.swing.JLabel();
-        dialogButton = new javax.swing.JButton();
+        okDialog = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -52,12 +53,14 @@ public class login extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        dialogLab.setText("text");
+        jDialog1.setMinimumSize(new java.awt.Dimension(275, 120));
 
-        dialogButton.setText("OK");
-        dialogButton.addActionListener(new java.awt.event.ActionListener() {
+        dialogLab.setText("Check Username / Password");
+
+        okDialog.setText("OK");
+        okDialog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dialogButtonActionPerformed(evt);
+                okDialogActionPerformed(evt);
             }
         });
 
@@ -66,23 +69,22 @@ public class login extends javax.swing.JFrame {
         jDialog1Layout.setHorizontalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(dialogLab))
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addComponent(dialogButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(dialogLab)
+                .addContainerGap(48, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(okDialog, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94))
         );
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addGap(32, 32, 32)
                 .addComponent(dialogLab)
-                .addGap(86, 86, 86)
-                .addComponent(dialogButton)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(okDialog)
+                .addGap(21, 21, 21))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -100,7 +102,12 @@ public class login extends javax.swing.JFrame {
         jLabel4.setToolTipText("");
 
         userCombo.setForeground(new java.awt.Color(102, 102, 255));
-        userCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PATIENT", "DOCTOR", "ADMIN" }));
+        userCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PATIENT", "ADMIN" }));
+        userCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userComboActionPerformed(evt);
+            }
+        });
 
         signupButton.setBackground(new java.awt.Color(0, 51, 51));
         signupButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -212,22 +219,21 @@ public class login extends javax.swing.JFrame {
               this.setVisible(false);
     }//GEN-LAST:event_signupButtonActionPerformed
 
-    private void dialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dialogButtonActionPerformed
+    private void okDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okDialogActionPerformed
              jDialog1.dispose();
-    }//GEN-LAST:event_dialogButtonActionPerformed
+    }//GEN-LAST:event_okDialogActionPerformed
 
     private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
         String username = usernameText.getText();
         String pass = passText.getText();
-            
+        if(!user.equals("ADMIN")){
         String msg = "username="+username+"&pass="+pass;
         //System.out.println(msg);
         try {
           String response = http.sendPost("login.php", msg);
           if(response.equals("wrongpass")){
               System.out.println(response);
-              dialogLab.setText(response);
-            jDialog1.setVisible(true);
+              jDialog1.setVisible(true);
           }
           else{
               System.out.println(response);
@@ -240,7 +246,29 @@ public class login extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }
+        else{
+            if(pass.equals("admin")){
+                new admin().setVisible(true);
+              this.setVisible(false);
+            }
+            else{
+                passText.setText("");
+            }
+        }
     }//GEN-LAST:event_loginButton1ActionPerformed
+
+    private void userComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userComboActionPerformed
+        user = userCombo.getSelectedItem().toString();
+        if(user.equals("ADMIN")){
+            usernameText.setText("admin");
+            usernameText.setEditable(false);
+        }
+        else{
+            usernameText.setText("");
+            usernameText.setEditable(true);
+        }
+    }//GEN-LAST:event_userComboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,7 +307,6 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton dialogButton;
     private javax.swing.JLabel dialogLab;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
@@ -289,6 +316,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton loginButton1;
+    private javax.swing.JButton okDialog;
     private javax.swing.JPasswordField passText;
     private javax.swing.JButton signupButton;
     private javax.swing.JComboBox<String> userCombo;

@@ -23,7 +23,7 @@ getPost http = new getPost();
     private void initComponents() {
 
         jLabel5 = new javax.swing.JLabel();
-        signUp = new javax.swing.JButton();
+        signUpButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -40,10 +40,10 @@ getPost http = new getPost();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(242, 241, 0));
 
-        signUp.setText("SignUp");
-        signUp.addActionListener(new java.awt.event.ActionListener() {
+        signUpButton.setText("SignUp");
+        signUpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signUpActionPerformed(evt);
+                signUpButtonActionPerformed(evt);
             }
         });
 
@@ -55,7 +55,7 @@ getPost http = new getPost();
 
         jLabel6.setText("Category");
 
-        categoryCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General", "Dentist", "Surgeon", "ENT Specialist" }));
+        categoryCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General", "Cancer", "ENT", "Gynecologist" }));
 
         jLabel4.setText("Fees");
 
@@ -79,7 +79,7 @@ getPost http = new getPost();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(signUp, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                        .addComponent(signUpButton, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
                         .addGap(105, 105, 105))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -118,14 +118,14 @@ getPost http = new getPost();
                     .addComponent(jLabel4)
                     .addComponent(feesText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(signUp)
+                .addComponent(signUpButton)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void signUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpActionPerformed
+    private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
         // TODO add your handling code here:
         String fname = fnameText.getText();
         String lname = lnameText.getText();
@@ -141,7 +141,7 @@ getPost http = new getPost();
             Logger.getLogger(drSignup.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_signUpActionPerformed
+    }//GEN-LAST:event_signUpButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,6 +197,6 @@ getPost http = new getPost();
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField lnameText;
     private javax.swing.JTextField phoneText;
-    private javax.swing.JButton signUp;
+    private javax.swing.JButton signUpButton;
     // End of variables declaration//GEN-END:variables
 }
