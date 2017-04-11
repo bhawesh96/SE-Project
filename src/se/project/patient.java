@@ -154,7 +154,8 @@ public class patient extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+        new login().setVisible(true);
+              this.setVisible(false);
         
     }//GEN-LAST:event_logoutButtonActionPerformed
 

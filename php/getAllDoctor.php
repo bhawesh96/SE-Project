@@ -39,6 +39,6 @@ else
 }
 
 else{
-	echo 'hat bc';
+	echo 'NA';
 }
  ?>

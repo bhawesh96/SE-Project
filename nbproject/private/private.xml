@@ -3,10 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/MAHE/Desktop/se%20project/src/se/project/SeProject.java</file>
-            <file>file:/C:/Users/MAHE/Desktop/se%20project/src/se/project/doctordetails_admin.java</file>
-            <file>file:/C:/Users/MAHE/Desktop/se%20project/src/se/project/patientupdate.java</file>
-            <file>file:/C:/Users/MAHE/Desktop/se%20project/src/se/project/doctorsdetails.java</file>
+            <file>file:/home/bhawesh96/Desktop/FINAL/SE-Project/src/se/project/drSignup.java</file>
+            <file>file:/home/bhawesh96/Desktop/FINAL/SE-Project/src/se/project/patientupdate.java</file>
+            <file>file:/home/bhawesh96/Desktop/FINAL/SE-Project/src/se/project/patientappointment.java</file>
+            <file>file:/home/bhawesh96/Desktop/FINAL/SE-Project/src/se/project/patHistory.java</file>
+            <file>file:/home/bhawesh96/Desktop/FINAL/SE-Project/src/se/project/patient.java</file>
+            <file>file:/home/bhawesh96/Desktop/FINAL/SE-Project/src/se/project/doctorsdetails.java</file>
+            <file>file:/home/bhawesh96/Desktop/FINAL/SE-Project/src/se/project/doctor.java</file>
+            <file>file:/home/bhawesh96/Desktop/FINAL/SE-Project/src/se/project/admin.java</file>
+            <file>file:/home/bhawesh96/Desktop/FINAL/SE-Project/src/se/project/drAppointments.java</file>
         </group>
     </open-files>
 </project-private>

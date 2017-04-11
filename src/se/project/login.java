@@ -231,10 +231,10 @@ public class login extends javax.swing.JFrame {
         //System.out.println(msg);
         try {
           String response = http.sendPost("login.php", msg);
-          if(response.equals("wrongpass")){
+          if(response.equals("wrongpass") || response.equals("dne")){
               System.out.println(response);
               jDialog1.setVisible(true);
-          }
+          }     
           else{
               System.out.println(response);
               myJSON(response);

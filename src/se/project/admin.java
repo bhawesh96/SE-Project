@@ -30,11 +30,21 @@ public class admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        addHistory = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         logoutButton = new javax.swing.JButton();
         newEntryButton = new javax.swing.JButton();
         viewUpdateButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        viewDoctors = new javax.swing.JButton();
+        viewPatient = new javax.swing.JButton();
+
+        addHistory.setText("Add to History");
+        addHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addHistoryActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +84,20 @@ public class admin extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/se/project/c3-healthcare-logo-hi.png"))); // NOI18N
 
+        viewDoctors.setText("View Doctors");
+        viewDoctors.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewDoctorsActionPerformed(evt);
+            }
+        });
+
+        viewPatient.setText("View Patients");
+        viewPatient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewPatientActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,14 +107,18 @@ public class admin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(23, 23, 23))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(viewUpdateButton)
                     .addComponent(newEntryButton)
+                    .addComponent(viewUpdateButton)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(logoutButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(viewPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(viewDoctors, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,9 +129,16 @@ public class admin extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(viewUpdateButton)
-                .addGap(28, 28, 28)
-                .addComponent(newEntryButton)
-                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(newEntryButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(viewDoctors)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewPatient)
+                .addGap(25, 25, 25)
                 .addComponent(logoutButton)
                 .addGap(69, 69, 69))
         );
@@ -126,6 +161,21 @@ public class admin extends javax.swing.JFrame {
         new drSignup().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_newEntryButtonActionPerformed
+
+    private void viewDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDoctorsActionPerformed
+        new doctorsdetails().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_viewDoctorsActionPerformed
+
+    private void viewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientActionPerformed
+        new patientDetails().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_viewPatientActionPerformed
+
+    private void addHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addHistoryActionPerformed
+        new addPatientHistory().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_addHistoryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,10 +213,13 @@ public class admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addHistory;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton newEntryButton;
+    private javax.swing.JButton viewDoctors;
+    private javax.swing.JButton viewPatient;
     private javax.swing.JButton viewUpdateButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,10 +12,10 @@ $drID = substr($phone,4).substr($fname,2);
 
 $sql = "INSERT INTO drDetails (drID, fname, lname, phone, category, fees) VALUES ('$drID', '$fname', '$lname', '$phone', '$category', '$fees')";
 
-if (mysqli_query($conn, $sql)) {
+if (mysql_query($sql)) {
     echo "New record created successfully";
 } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    echo mysql_error($sql);
 }
 
 

@@ -23,6 +23,9 @@ getPost http = new getPost();
     private void initComponents() {
 
         jLabel5 = new javax.swing.JLabel();
+        dialog = new javax.swing.JDialog();
+        jLabel7 = new javax.swing.JLabel();
+        okDialog = new javax.swing.JButton();
         signUpButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -36,6 +39,41 @@ getPost http = new getPost();
         feesText = new javax.swing.JTextField();
 
         jLabel5.setText("jLabel5");
+
+        dialog.setMinimumSize(new java.awt.Dimension(275, 150));
+
+        jLabel7.setText("Doctor Added Successfully");
+
+        okDialog.setText("OK");
+        okDialog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okDialogActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialogLayout = new javax.swing.GroupLayout(dialog.getContentPane());
+        dialog.getContentPane().setLayout(dialogLayout);
+        dialogLayout.setHorizontalGroup(
+            dialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogLayout.createSequentialGroup()
+                .addGroup(dialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialogLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel7))
+                    .addGroup(dialogLayout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(okDialog, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(64, Short.MAX_VALUE))
+        );
+        dialogLayout.setVerticalGroup(
+            dialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(okDialog)
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(242, 241, 0));
@@ -136,12 +174,20 @@ getPost http = new getPost();
         System.out.println(msg);
         
         try {
-            http.sendPost("drSignup.php", msg);
+            String response = http.sendPost("drSignup.php", msg);
+            System.out.println(response);
+            dialog.setVisible(true);
+            
         } catch (Exception ex) {
             Logger.getLogger(drSignup.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_signUpButtonActionPerformed
+
+    private void okDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okDialogActionPerformed
+        new admin().setVisible(true);
+            this.setVisible(false);
+    }//GEN-LAST:event_okDialogActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,6 +233,7 @@ getPost http = new getPost();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> categoryCombo;
+    private javax.swing.JDialog dialog;
     private javax.swing.JTextField feesText;
     private javax.swing.JTextField fnameText;
     private javax.swing.JLabel jLabel1;
@@ -195,7 +242,9 @@ getPost http = new getPost();
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField lnameText;
+    private javax.swing.JButton okDialog;
     private javax.swing.JTextField phoneText;
     private javax.swing.JButton signUpButton;
     // End of variables declaration//GEN-END:variables

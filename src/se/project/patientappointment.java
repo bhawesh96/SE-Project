@@ -61,6 +61,11 @@ public class patientappointment extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        noDoctorDialog = new javax.swing.JDialog();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        nodrText = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -77,6 +82,49 @@ public class patientappointment extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+
+        noDoctorDialog.setMinimumSize(new java.awt.Dimension(300, 300));
+
+        nodrText.setColumns(20);
+        nodrText.setRows(5);
+        nodrText.setText("Doctors on this particular date \nand under ths particular category \nare not available.\nPlease choose another entry.");
+        jScrollPane1.setViewportView(nodrText);
+
+        jButton1.setText("OK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout noDoctorDialogLayout = new javax.swing.GroupLayout(noDoctorDialog.getContentPane());
+        noDoctorDialog.getContentPane().setLayout(noDoctorDialogLayout);
+        noDoctorDialogLayout.setHorizontalGroup(
+            noDoctorDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(noDoctorDialogLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11))
+            .addGroup(noDoctorDialogLayout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        noDoctorDialogLayout.setVerticalGroup(
+            noDoctorDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(noDoctorDialogLayout.createSequentialGroup()
+                .addGroup(noDoctorDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(noDoctorDialogLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(jLabel11))
+                    .addGroup(noDoctorDialogLayout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
+                .addComponent(jButton1)
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -205,8 +253,7 @@ public class patientappointment extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(timeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel6)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(268, 268, 268)
                         .addComponent(jLabel10)
@@ -245,9 +292,14 @@ public class patientappointment extends javax.swing.JFrame {
         try {
             String response = http.sendPost("getDoctor.php", msg);
             System.out.print(response);
+            if(response.equals("NA")){
+                nodrText.setEditable(false);
+                noDoctorDialog.setVisible(true);
+            }
            try{ myJSON(response);}
            catch (Exception e){
-               System.out.println("No doctors available");
+               //System.out.println("No doctors available");
+               
            }
         } catch (Exception ex) {
             Logger.getLogger(patientappointment.class.getName()).log(Level.SEVERE, null, ex);
@@ -269,11 +321,20 @@ public class patientappointment extends javax.swing.JFrame {
         String msg = "patID=" + patID + "&drID="+drID+"&date="+dobVal+"&slot="+slot;
         try {
             String response = http.sendPost("bookApp.php", msg);
-            System.out.println(response);
+            System.out.println(response+"yo yo yo");
+            if(response.equals("booked")){
+                nodrText.setText("Your Appointment has been booked");
+                nodrText.setEditable(false);
+                noDoctorDialog.setVisible(true);
+            }
         } catch (Exception ex) {
             Logger.getLogger(patientappointment.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_bookButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        noDoctorDialog.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     
     /**
@@ -319,8 +380,10 @@ public class patientappointment extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> catCombo;
     private org.jdesktop.swingx.JXDatePicker datPicker;
     private javax.swing.JComboBox<String> drNameCombo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -329,6 +392,9 @@ public class patientappointment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JDialog noDoctorDialog;
+    private javax.swing.JTextArea nodrText;
     private javax.swing.JComboBox<String> timeCombo;
     // End of variables declaration//GEN-END:variables
 }

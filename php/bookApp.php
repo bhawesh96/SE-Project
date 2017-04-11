@@ -20,7 +20,7 @@ if(!$result)
  }
 
 else{
-	echo "Booked successfully";
+	echo "booked";
 }
 
 ?>

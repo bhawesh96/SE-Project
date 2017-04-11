@@ -6,7 +6,7 @@ $username = $_POST['username'];
 $pass = $_POST['pass'];
 
 $sql = "SELECT * FROM patDetails WHERE fname='{$username}'";
- $result = mysql_query($sql);
+$result = mysql_query($sql);
 
 
 if(!$result)
@@ -44,6 +44,6 @@ else
 }
 
 else{
-	echo 'hat bc';
+	echo 'dne';
 }
 ?>
